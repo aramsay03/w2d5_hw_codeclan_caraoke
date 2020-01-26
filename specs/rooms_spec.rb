@@ -4,6 +4,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative('../rooms')
 require_relative('../guests')
 require_relative('../songs')
+require('pry-byebug')
 class TestRoom < Minitest::Test
 
  def setup
@@ -31,4 +32,18 @@ class TestRoom < Minitest::Test
    assert_equal(2, @room1.capacity)
   end
 
+  def test_add_guests_to_room
+    # binding.pry
+    @room1.add_guests_to_room(@guest1.name)
+    assert_equal(["Alan"], @room1.guests)
+  end
+
+  def test_add_guests_to_room__multiple_guests_and_rooms
+    # binding.pry
+    @room1.add_guests_to_room(@guest1.name)
+    @room1.add_guests_to_room(@guest2.name)
+    @room2.add_guests_to_room(@guest3.name)
+    assert_equal(["Alan", "Malcom"], @room1.guests)
+    assert_equal(["Luke"], @room2.guests)
+  end
 end
