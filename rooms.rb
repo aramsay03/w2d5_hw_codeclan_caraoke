@@ -11,22 +11,26 @@ class Room
     @songs = []
   end
 
-  def add_guests_to_room(guest)
+  def add_guest_to_room(guest)
     @guests.push(guest)
   end
 
-  # def add_guest_to_room(guest)
-  #   # binding.pry
-  #   # 2 Arrguments will need to enter function (room, guest)
-  #   # Add guest to specific room using if statment
-  #   @guests[] << guest.name
-  # end
+  def remove_guest_from_room(guest)
+    @guests.pop()
 
+  end
 
+  def check_number_guests_in_room
+    return @guests.size
+  end
 
+  # def planet_names()
+  #     return @planets.map {|planet| planet.name}
+  #   end
 
-
-
+  def add_songs_to_room(song)
+    @songs.push(song)
+  end
 
 
 end

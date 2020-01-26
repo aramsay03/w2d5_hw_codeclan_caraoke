@@ -21,7 +21,7 @@ class TestRoom < Minitest::Test
     @song2 = Song.new("Where's My Tribe", "Charlene Soraia")
     @song3 = Song.new("Moment Of Surrender", "Nick Mulvey")
 
-    @songs = [@song1, @song2, @song3]
+    @playlist = [@song1, @song2, @song3]
   end
 
   def test_room_name
@@ -32,18 +32,51 @@ class TestRoom < Minitest::Test
    assert_equal(2, @room1.capacity)
   end
 
-  def test_add_guests_to_room
+  def test_add_guest_to_room
     # binding.pry
-    @room1.add_guests_to_room(@guest1.name)
+    @room1.add_guest_to_room(@guest1.name)
     assert_equal(["Alan"], @room1.guests)
   end
 
   def test_add_guests_to_room__multiple_guests_and_rooms
     # binding.pry
-    @room1.add_guests_to_room(@guest1.name)
-    @room1.add_guests_to_room(@guest2.name)
-    @room2.add_guests_to_room(@guest3.name)
-    assert_equal(["Alan", "Malcom"], @room1.guests)
-    assert_equal(["Luke"], @room2.guests)
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest2)
+    @room2.add_guest_to_room(@guest3)
+    assert_equal(2, @room1.guests.size)
+    assert_equal(1, @room2.guests.size)
   end
+
+  def test_add_guests_to_room__multiple_guests_and_rooms
+    # binding.pry
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest2)
+    @room2.add_guest_to_room(@guest3)
+    assert_equal(2, @room1.guests.size)
+    assert_equal(1, @room2.guests.size)
+  end
+
+  def test_remove_guest_from_room
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest2)
+    # binding.pry
+    @room1.remove_guest_from_room(@guest1)
+    assert_equal(1, @room1.guests.size)
+  end
+
+  def test_check_number_guests_in_room
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest2)
+    @room1.add_guest_to_room(@guest3)
+    assert_equal(3, @room1.check_number_guests_in_room)
+  end
+
+  def test_add_songs_to_room
+    # binding.pry
+    @room1.add_songs_to_room(@playlist)
+    assert_equal(@playlist, @room1.songs[0])
+  end
+
+
+
 end

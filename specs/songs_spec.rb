@@ -2,7 +2,7 @@ require('minitest/autorun')
 require('minitest/reporters')
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative('../songs')
-# require_relative('../rooms')
+require_relative('../rooms')
 class TestSong < Minitest::Test
 
   def setup
@@ -10,7 +10,7 @@ class TestSong < Minitest::Test
     @song2 = Song.new("Where's My Tribe", "Charlene Soraia")
     @song3 = Song.new("Moment Of Surrender", "Nick Mulvey")
 
-    @songs = [@song1, @song2, @song3]
+    @playlist = [@song1, @song2, @song3]
   end
 
   def test_song_name
