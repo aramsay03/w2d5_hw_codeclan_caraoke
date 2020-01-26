@@ -32,5 +32,11 @@ class Room
     @songs.push(song)
   end
 
+  # def add_guests_to_room_with_checks(room, guest)
+  #   for guest in
+  #   if check_number_guests_in_room <= room.capacity
+  #     add_guest_to_room(guest)
+  #   end
+  # end
 
 end

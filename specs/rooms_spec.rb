@@ -77,6 +77,14 @@ class TestRoom < Minitest::Test
     assert_equal(@playlist, @room1.songs[0])
   end
 
+  # def test_add_guests_to_room_with_checks__check_room_capasity
+  #   # binding.pry
+  #   @room1.add_guest_to_room_with_checks(@room1, @guest1)
+  #   @room1.add_guest_to_room_with_checks(@room1, @guest2)
+  #   @room1.add_guest_to_room_with_checks(@room1, @guest3)
+  #   assert_equal(2, @room1.guests.size)
+  # end
+
 
 
 end
